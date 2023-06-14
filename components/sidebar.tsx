@@ -4,8 +4,6 @@ import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { LayoutGroup, motion } from 'framer-motion';
-import SVG from "../public/svg/J.svg"
-//console.log("SVG", SVG)
 
 const navItems = {
   '/': {
@@ -35,7 +33,7 @@ export default function Navbar() {
         <Link aria-label="Lee Robinson" href="/">
           <motion.img
             className="h-[25px] md:h-[37px]"
-            src={SVG.src}
+            // src={SVG.src}
             alt="Logo"
             initial={{
               opacity: 0,
