@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns1="http://sozi.baierouge.fr" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg2854" viewBox="0 0 143 252" version="1.1" inkscape:version="0.91 r13725">
+  <path id="path3358" style="fill:#000000" d="m68.577 236.89c-4.1832-0.54145-9.0463-1.7849-10.807-2.7631-3.7573-2.0877-8.2646-10.638-7.1453-13.555 1.0349-2.6969 3.3563-1.1021 5.1101 3.5105 1.9795 5.2064 13.742 10.267 21.122 9.0866 21.475-3.434 29.146-17.651 29.126-53.98-0.0124-22.403-0.0786-23.102-3.6987-39.001-3.1966-14.04-7.4036-35.919-7.4583-38.79-0.02397-1.255-0.60475-3.0002-1.2907-3.8784-0.6859-0.87815-1.6964-4.4066-2.2456-7.8409-0.84882-5.3082-0.53456-6.4926 2.0964-7.9006 2.7566-1.4753 3.2102-1.1171 4.1498 3.2775 0.5802 2.7136 1.5685 5.6183 2.1963 6.4549 0.62775 0.83664 1.5236 3.2325 1.9907 5.3241 0.46711 2.0916 1.8587 8.2632 3.0925 13.715 1.2338 5.4515 2.7392 14.008 3.3454 19.014 0.60622 5.0065 1.6436 9.7872 2.3053 10.624 2.4023 3.0374 4.8943 33.346 3.8706 47.077-1.9801 26.559-7.5762 39.933-19.676 47.024-7.0782 4.1481-11.065 4.5458-26.084 2.6018zm-3.23-216.41c-0.41366-0.66931-2.423-1.2169-4.4652-1.2169-2.6559 0-3.7131-0.83707-3.7131-2.9398 0-6.2886 10.525-4.7602 17.077 2.4798 2.5272 2.7925 2.4304 2.8938-2.7639 2.8938-2.9605 0-5.7212-0.54762-6.1348-1.2169z"/>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Letter j</dc:title>
+        <dc:date>2010-04-22T06:54:34</dc:date>
+        <dc:description>These are some quick sketches and doodles I made in my notebook on a flight. These are mostly shit, but hey, lets see if useful!</dc:description>
+        <dc:source>https://openclipart.org/detail/50023/letter-j-by-rejon</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>rejon</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>black</rdf:li>
+            <rdf:li>bw</rdf:li>
+            <rdf:li>drawings</rdf:li>
+            <rdf:li>fast</rdf:li>
+            <rdf:li>rapid</rdf:li>
+            <rdf:li>rejon</rdf:li>
+            <rdf:li>sketch</rdf:li>
+            <rdf:li>sketchbook</rdf:li>
+            <rdf:li>unchecked</rdf:li>
+            <rdf:li>white</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
