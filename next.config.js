@@ -43,7 +43,7 @@ const ContentSecurityPolicy = `
   media-src 'none';
   connect-src *;
   font-src 'self';
-  frame-src 'self' www.youtube.com;
+  frame-src 'self' www.youtube.com 'allowfullscreen';
 `;
 
 
