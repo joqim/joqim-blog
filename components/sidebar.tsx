@@ -15,9 +15,9 @@ const navItems = {
   '/blog': {
     name: 'blog',
   },
-  // '/guestbook': {
-  //   name: 'guestbook',
-  // },
+  '/globe': {
+    name: 'globe',
+  },
 };
 
 export default function Navbar() {
