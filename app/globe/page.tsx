@@ -43,8 +43,12 @@ export default function GlobePage() {
 
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif">Globe</h1>
-
+      <h1 className="font-bold text-3xl font-serif">Location</h1>
+      <div className="prose prose-neutral dark:prose-invert text-neutral-800 dark:text-neutral-200">
+        <p>
+          I'm currently based of the <b>San Francisco Bay Area</b>.
+        </p>
+      </div>
       <canvas
         ref={canvasRef}
         style={{ width: 400, height: 400, maxWidth: "100%", aspectRatio: 1 }}
