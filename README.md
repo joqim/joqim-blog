@@ -1,4 +1,4 @@
-# joqim.com
+# joqim.com (live now)
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Database**: [PlanetScale](https://planetscale.com)
