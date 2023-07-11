@@ -1,0 +1,44 @@
+---
+title: 'AI Commits - 1Password Integration'
+publishedAt: '2023-07-15'
+summary: '1Password shell plugin for Railway CLI'
+---
+
+I recently discovered [Nutlope's](https://twitter.com/nutlope?lang=en) AICommits which is a CLI that writes your git commit messages for you with AI.
+
+In the age of AI, I felt this was most appropriate as it eases a developer's workflow where he ends up spending more time writing meaningful code instead of keeping detailed track of his contributions.
+
+[AICommits](https://github.com/joqim/aicommits)
+
+When setting up the configuration for AI Commits, the CLI requests the user to provision an OPENAI API Key.
+
+`aicommits config set OPENAI_KEY=<token>`
+
+This is when I realized, doesn't 1Password have an OPEN AI shell plugin to provision an API key?
+
+Going through [1Password's documentation](https://developer.1password.com/docs/cli/secrets-scripts/#option-2-use-op-read-to-read-secrets) on provisioning secrets into scripts, I managed to connect AICommits to 1Password's private vault, thus fetching the OPENAI API Key.
+
+```
+const configParsers = {
+    OPENAI_KEY(key?: string) {
+        if (!key) {
+          // Fetch the OpenAI API key from 1Password vault
+          const openAIKey = execSync(`op read 'op://Private/OpenAI/api-key'`).toString().trim();
+          if (!openAIKey) {
+            throw new KnownError('Logging - Please set your OpenAI API key via `aicommits config set OPENAI_KEY=<your token>`');
+          }
+          key = openAIKey;
+        }
+        parseAssert('OPENAI_KEY', key.startsWith('sk-'), 'Must start with "sk-"');
+        // Key can range from 43~51 characters. There's no spec to assert this.
+
+        return key;
+    },
+}
+```
+
+Preferably an `aicommits config` command would prompt to see if OPENAI_KEY exists in my connected 1Password account. If it does, simply use that credential otherwise guide the user through a set of follow-up prompts to set up and link the account.
+
+Keep in mind, this is still a work in progress and I'm yet to integrate into Nutlope's main branch.
+
+Ultimately, this way AICommits integration with 1Password enables developers to avoid keeping secrets in plaintext.

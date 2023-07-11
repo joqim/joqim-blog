@@ -1,0 +1,74 @@
+---
+title: 'Railway - 1Password Shell Plugin'
+publishedAt: '2023-07-09'
+summary: '1Password shell plugin for Railway CLI'
+---
+
+[Railway Shell Plugin](https://github.com/joqim/shell-plugins/tree/new/railway/plugins/railway) is a 1Password CLI shell plugin written in Go to securely authenticate third-party CLIs with your fingerprint, Apple Watch, or system authentication for the [Railway CLI](https://railway.app/). <br/>
+
+Railway's comprehensive infrastructure platform has piqued my interest as it offers the ability to provision infrastructure, develop locally, and seamlessly deploy to the cloud.
+
+Motivated by this, I decided to contribute to the development of the Railway Shell Plugin for 1Password.
+
+This plugin enables users to securely retrieve secrets and credentials stored in their 1Password vault directly within the Railway CLI, simplifying the deployment process and ensuring the highest level of data protection.
+
+Railway uses the railway login command to store the token in a config.json file. It is present at `~/.railway/config.json`
+
+The shell plugin returns a CLI executable that mentions the Token.
+
+```
+func RailwayCLI() schema.Executable {
+    return schema.Executable{
+        Name:      "Railway CLI", // TODO: Check if this is correct
+        Runs:      []string{"railway"},
+        DocsURL:   sdk.URL("https://railway.com/docs/cli"), // TODO: Replace with actual URL
+        NeedsAuth: needsauth.IfAll(
+            needsauth.NotForHelpOrVersion(),
+            needsauth.NotWithoutArgs(),
+            needsauth.NotForExactArgs("config"),
+        ),
+        Uses: []schema.CredentialUsage{
+            {
+                Name: credname.Token,
+            },
+        },
+    }
+}
+```
+
+The plugin then imports the config file based on the path and then provisions the Token which is decoded from the string obtained.
+
+```
+var defaultEnvVarMapping = map[string]sdk.FieldName{
+    "RAILWAY_TOKEN": fieldname.Token,
+}
+
+// implement the function below to add support for importing it.
+func TryRailwayConfigFile() sdk.Importer {
+    return importer.TryFile("~/.railway/config.json", func(ctx context.Context, contents importer.FileContents, in sdk.ImportInput, out *sdk.ImportAttempt) {
+        var config struct {
+            User struct {
+                Token string `json:"token"`
+            } `json:"user"`
+        }
+        if err := contents.ToJSON(&config); err != nil {
+            out.AddError(err)
+            return
+        }
+
+        if config.User.Token == "" {
+            return
+        }
+
+        out.AddCandidate(sdk.ImportCandidate{
+            Fields: map[sdk.FieldName]string{
+                fieldname.Token: config.User.Token,
+            },
+        })
+    })
+}
+```
+
+By actively participating in the development of Railway's plugin, my objective was to optimize my workflow and enhance the security of my deployments.
+
+Additionally, I acknowledged that my contributions would have a positive impact on the wider Railway community, providing developers with a user-friendly and secure method to handle their secrets within the familiar Railway environment.

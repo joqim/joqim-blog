@@ -28,9 +28,12 @@ export default async function BlogPage() {
             <div className="w-full flex flex-col">
               <p>{post.title}</p>
               <p className="font-mono text-sm text-neutral-500 tracking-tighter">
-                {post.title === "Settler" && "25 views"}
-                {post.title === "Siege GPT" && "9 views"}
-                {post.title === "Edvora" && "11 views"}
+                {post.title === "Settler" && "223 views"}
+                {post.title === "Siege-GPT" && "49 views"}
+                {post.title === "Edvora" && "47 views"}
+                {post.title === "Netlify - 1Password Shell Plugin" && "151 views"}
+                {post.title === "Railway - 1Password Shell Plugin" && "145 views"}
+                {post.title === "AI Commits - 1Password Integration" && "137 views"}
               </p>
             </div>
           </Link>

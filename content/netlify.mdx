@@ -1,0 +1,69 @@
+---
+title: 'Netlify - 1Password Shell Plugin'
+publishedAt: '2023-07-11'
+summary: '1Password shell plugin for Netlify CLI'
+---
+
+[Netlify Shell Plugin](https://github.com/1Password/shell-plugins/pull/333) is a 1Password CLI shell plugin written in Go to securely authenticate third-party CLIs with your fingerprint, Apple Watch, or system authentication for the [Netlify CLI](https://www.netlify.com/). <br/>
+
+As an avid user of Netlify for deploying my applications, I recognized the need for seamless integration between Netlify's powerful deployment platform and the security and convenience offered by 1Password.
+
+Motivated by this, I decided to contribute to the development of the Netlify Shell Plugin for 1Password.
+
+This plugin enables users to securely retrieve secrets and credentials stored in their 1Password vault directly within the Netlify CLI, simplifying the deployment process and ensuring the highest level of data protection.
+
+Netlify uses the auth login command to store the access token in a config.json file. It is present at `~/Library/Preferences/netlify/config.json`
+
+The shell plugin returns a CLI executable that mentions about Personal access token.
+
+```
+func NetlifyCLI() schema.Executable {
+    return schema.Executable{
+        Name:      "Netlify CLI",
+        Runs:      []string{"netlify"},
+        DocsURL:   sdk.URL("https://netlify.com/docs/cli"),
+        NeedsAuth: needsauth.IfAll(
+            needsauth.NotForHelpOrVersion(),
+            needsauth.NotWithoutArgs(),
+            needsauth.NotForExactArgs("config"),
+        ),
+        Uses: []schema.CredentialUsage{
+            {
+                Name: credname.PersonalAccessToken,
+            },
+        },
+    }
+}
+```
+
+<br/>
+
+The plugin then imports the config file based on the path and then provisions the Personal access token which is decoded from the string obtained. <br/>
+
+```
+func TryNetlifyConfigFile() sdk.Importer {
+    return importer.TryFile("~/Library/Preferences/netlify/config.json", func(ctx context.Context, contents importer.FileContents, in sdk.ImportInput, out *sdk.ImportAttempt) {
+        var config Config
+        if err := contents.ToJSON(&config); err != nil {
+            out.AddError(err)
+            return
+        }
+
+        if config.Users != nil {
+            for _, user := range config.Users {
+                if user.Auth != nil && user.Auth.Token != "" {
+                    out.AddCandidate(sdk.ImportCandidate{
+                        Fields: map[sdk.FieldName]string{
+                            fieldname.Token: user.Auth.Token,
+                        },
+                    })
+                }
+            }
+        }
+    })
+}
+```
+
+By contributing to the plugin's development, I aimed to streamline my workflow and improve the security of my deployments.
+
+Simultaneously, I recognized that my contributions would benefit the broader Netlify community, offering developers an easy and secure way to manage their secrets within the familiar Netlify environment.
