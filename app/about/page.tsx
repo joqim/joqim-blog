@@ -20,8 +20,8 @@ export default function AboutPage() {
       </p> */}
       <div className="prose prose-neutral dark:prose-invert text-neutral-800 dark:text-neutral-200">
         <p>
-          I've recently completed my <b>Masters in Computer science</b> from California State University, East Bay. <br/><br/>
-          I have over <b>4 years</b> of experience in the software engineering field.
+          With a decade of experience, I bring strong expertise in React/TypeScript, SCSS/CSS, HTML, Jest, Webpack, Node, Babel, and A11y standards. <br/><br/> 
+          Committed to the Agile Software Development Cycle, I am excited to bring my skills to contribute effectively to your team and projects.
         </p>
         <hr />
         <p>
